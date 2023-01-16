@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title='Confirm deletion of sala')"> </head>
+<body>
+	<header th:replace="fragments/admin_base.html :: intestazione"></header>
+	<div>
+		<h4 th:text="@{'Confermi rimozione di: ' + ${sala.nome} + '? La sala potrebbe avere proiezioni associate'}">Conferma rimozione di sala</h4>
+	</div>
+	<form th:action="@{'/admin/delete/sala/' + ${sala.id}}" method="POST">
+		<section>
+			<h5>Dati della sala: </h5>
+			<ul>
+				<li th:text="'Nome: ' + ${sala.nome}">Nome</li>
+				<li th:text="'Posti: ' + ${sala.posti}">Posti</li>
+			</ul>		
+		</section>
+		<div>
+				<span><button type="submit">Conferma</button></span>
+				<span><a th:href="@{/admin/sale}"><button type="button">Annulla</button></a></span>
+		</div>
+	</form>
+</body>
+</html>

@@ -1,10 +1,13 @@
 package it.uniroma3.siw.siwprogettocinema.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Sala {
@@ -14,9 +17,11 @@ public class Sala {
 	private Long id;
 	
 	@NotBlank
+	@Column(unique = true)
 	private String nome;
 	
-	@NotBlank
+	@NotNull
+	@Min(0)
 	private Integer posti;
 
 	public Long getId() {
@@ -47,11 +52,11 @@ public class Sala {
 	public boolean equals(Object o) {
 		if(o == null || this.getClass() != o.getClass()) return false;
 		Sala sala = (Sala)o;
-		return this.nome == sala.getNome();
+		return this.nome.trim() == sala.getNome().trim();
 	}
 	
 	@Override
 	public int hashCode() {
-		return this.nome.hashCode();
+		return this.nome.trim().hashCode();
 	}
 }

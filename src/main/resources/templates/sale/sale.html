@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title='Sale')"> </head>
+<body>
+	<header th:replace="fragments/admin_base.html :: intestazione"></header>
+	<section th:if="${#lists.isEmpty(sale)}">
+		<h4>Nessuna sala presente</h4>
+	</section>
+	<section th:unless="${#lists.isEmpty(sale)}">
+		<h4>Elenco sale</h4>
+		<table>
+			<tr>
+				<th>NOME</th>
+				<th>NUMERO POSTI</th>
+			</tr>
+			<tr th:each="sala : ${sale}">
+				<td th:text="${sala.nome}">Sala vuota</td>
+				<td th:text="${sala.posti}">0</td>
+				<td><a th:href="@{'/admin/edit/sala/' + ${sala.id}}">Modifica</a></td>
+				<td><a th:href="@{'/admin/delete/sala/' + ${sala.id}}">Rimuovi</a></td>
+			</tr>
+		</table>
+	</section>
+	<section>
+		<a th:href="@{/admin/salaForm}">Aggiungi sala</a>
+	</section>
+</body>
+</html>

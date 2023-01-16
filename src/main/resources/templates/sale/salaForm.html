@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title='Add Sala')"> </head>
+<body>
+	<header th:replace="fragments/admin_base.html :: intestazione"></header>
+	<div>
+		<h4>Creazione nuova sala</h4>
+	</div>
+	<form th:action="@{/admin/sala}" method="POST" th:object="${sala}">
+		<table>
+			<tr>
+				<td>Nome:</td>
+				<td><input th:field=*{nome} type="text" required /></td>
+				<td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" th:style="'color:red'"></td>
+			</tr>		
+			<tr>
+				<td>Numero posti:</td>
+				<td><input th:field="*{posti}" type="text" required /></td>
+				<td th:if="${#fields.hasErrors('posti')}" th:errors="*{posti}" th:style="'color:red'"></td>
+			</tr>
+		</table>
+		<div>
+				<span><button type="submit">Aggiungi</button></span>
+				<span><a th:href="@{/admin/sale}"><button type="button">Annulla</button></a></span>
+		</div>
+	</form>
+</body>
+</html>
