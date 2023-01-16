@@ -40,7 +40,7 @@ public class Film {
 	}
 
 	public void setTitolo(String titolo) {
-		this.titolo = titolo;
+		this.titolo = titolo.trim();
 	}
 
 	public String getDurata() {
@@ -48,7 +48,7 @@ public class Film {
 	}
 
 	public void setDurata(String durata) {
-		this.durata = durata;
+		this.durata = durata.trim();
 	}
 
 	public String getDescrizione() {
@@ -56,7 +56,7 @@ public class Film {
 	}
 
 	public void setDescrizione(String descrizione) {
-		this.descrizione = descrizione;
+		this.descrizione = descrizione.trim();
 	}
 
 	public List<Proiezione> getProiezioni() {
@@ -71,11 +71,12 @@ public class Film {
 	public boolean equals(Object o) {
 		if(o == null || this.getClass() != o.getClass()) return false;
 		Film film = (Film)o;
-		return this.titolo == film.getTitolo() && this.durata == film.getDurata();
+		return this.titolo.equals(film.getTitolo()) && this.durata.equals(film.getDurata());
 	}
 	
 	@Override
 	public int hashCode() {
 		return this.titolo.hashCode() + this.durata.hashCode();
 	}
+	
 }

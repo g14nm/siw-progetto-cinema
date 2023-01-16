@@ -37,7 +37,7 @@ public class Sala {
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.nome = nome.trim();
 	}
 
 	public Integer getPosti() {
@@ -52,11 +52,12 @@ public class Sala {
 	public boolean equals(Object o) {
 		if(o == null || this.getClass() != o.getClass()) return false;
 		Sala sala = (Sala)o;
-		return this.nome.trim() == sala.getNome().trim();
+		return this.nome.equals(sala.getNome());
 	}
 	
 	@Override
 	public int hashCode() {
-		return this.nome.trim().hashCode();
+		return this.nome.hashCode();
 	}
+	
 }

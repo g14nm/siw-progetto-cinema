@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title='Confirm deletion of film')"> </head>
+<body>
+	<header th:replace="fragments/admin_base.html :: intestazione"></header>
+	<div>
+		<h4 th:text="@{'Confermi rimozione di: ' + ${film.titolo} + '? Il film potrebbe avere proiezioni associate'}">Conferma rimozione di film</h4>
+	</div>
+	<form th:action="@{'/admin/delete/film/' + ${film.id}}" method="POST">
+		<section>
+			<h5>Dati del film: </h5>
+			<ul>
+				<li th:text="'Titolo: ' + ${film.titolo}">Titolo</li>
+				<li th:text="'Durata: ' + ${film.durata}">Durata</li>
+				<li th:text="'Descrizione: ' + ${film.descrizione}"></li>
+			</ul>		
+		</section>
+		<div>
+				<span><button type="submit">Conferma</button></span>
+				<span><a th:href="@{/admin/film}"><button type="button">Annulla</button></a></span>
+		</div>
+	</form>
+</body>
+</html>

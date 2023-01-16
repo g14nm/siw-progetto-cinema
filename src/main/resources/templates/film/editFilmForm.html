@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title='Edit Film')"> </head>
+<body>
+	<header th:replace="fragments/admin_base.html :: intestazione"></header>
+	<div>
+		<h4>Modifica film</h4>
+	</div>
+	<form th:action="@{'/admin/edit/film/' + ${film.id}}" method="POST" th:object="${film}">
+		<table>
+			<tr>
+				<td>Titolo:</td>
+				<td><input th:field=*{titolo} type="text" required /></td>
+				<td th:if="${#fields.hasErrors('titolo')}" th:errors="*{titolo}" th:style="'color:red'"></td>
+			</tr>		
+			<tr>
+				<td>Durata:</td>
+				<td><input th:field="*{durata}" type="text" required /></td>
+				<td th:if="${#fields.hasErrors('durata')}" th:errors="*{durata}" th:style="'color:red'"></td>
+			</tr>
+			<tr>
+				<td>Descrizione:</td>
+				<td><input th:field=*{descrizione} type="text"/></td>
+				<td th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}" th:style="'color:red'"></td>
+			</tr>
+		</table>
+		<div>
+				<span><button type="submit">Conferma</button></span>
+				<span><a th:href="@{/admin/film}"><button type="button">Annulla</button></a></span>
+		</div>
+	</form>
+</body>
+</html>
