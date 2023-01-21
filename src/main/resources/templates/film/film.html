@@ -10,11 +10,13 @@
 		<h4>Elenco film</h4>
 		<table>
 			<tr>
+				<th></th>
 				<th>TITOLO</th>
 				<th>DURATA</th>
 				<th>DESCRIZIONE</th>
 			</tr>
 			<tr th:each="film : ${films}">
+				<img th:src="@{'/locandine/' + ${film.id}}" style="width:216px;height:300px"/>
 				<td th:text="${film.titolo}">Titolo</td>
 				<td th:text="${film.durata}">0 min</td>
 				<td th:text="${film.descrizione}"></td>

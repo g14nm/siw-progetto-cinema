@@ -14,8 +14,8 @@ public class SalaService {
 	@Autowired
 	private SalaRepository salaRepository;
 	
-	public void save(Sala sala) {
-		this.salaRepository.save(sala);
+	public Sala save(Sala sala) {
+		return this.salaRepository.save(sala);
 	}
 	
 	public List<Sala> findAll() {

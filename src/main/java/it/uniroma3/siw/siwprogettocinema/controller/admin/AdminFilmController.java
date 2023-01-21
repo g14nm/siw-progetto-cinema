@@ -1,5 +1,7 @@
 package it.uniroma3.siw.siwprogettocinema.controller.admin;
 
+import java.io.IOException;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import it.uniroma3.siw.siwprogettocinema.FileUploadUtil;
 import it.uniroma3.siw.siwprogettocinema.controller.validator.FilmValidator;
 import it.uniroma3.siw.siwprogettocinema.model.Film;
 import it.uniroma3.siw.siwprogettocinema.service.FilmService;
@@ -37,10 +42,14 @@ public class AdminFilmController {
 	}
 	
 	@PostMapping("/admin/film")
-	public String createFilm(@Valid @ModelAttribute("film") Film film, BindingResult bindingResult, Model model) {
+	public String createFilm(@RequestParam("image") MultipartFile multipartFile, @Valid @ModelAttribute("film") Film film, BindingResult bindingResult, Model model)
+			throws IOException {
 		this.filmValidator.validate(film, bindingResult);
 		if(!bindingResult.hasErrors()) {
-			this.filmService.save(film);
+			Film savedFilm = this.filmService.save(film);
+			
+			String uploadDir = "locandine/";
+	        FileUploadUtil.saveFile(uploadDir, savedFilm.getId().toString(), multipartFile);
 			return "redirect:/admin/film";
 		}
 		else return "film/filmForm";

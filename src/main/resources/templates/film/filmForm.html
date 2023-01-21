@@ -6,21 +6,26 @@
 	<div>
 		<h4>Creazione nuovo film</h4>
 	</div>
-	<form th:action="@{/admin/film}" method="POST" th:object="${film}">
+	<form th:action="@{/admin/film}" method="POST" th:object="${film}" enctype="multipart/form-data">
 		<table>
 			<tr>
-				<td>Titolo:</td>
+				<td>Titolo: </td>
 				<td><input th:field=*{titolo} type="text" required /></td>
 				<td th:if="${#fields.hasErrors('titolo')}" th:errors="*{titolo}" th:style="'color:red'"></td>
 			</tr>		
 			<tr>
-				<td>Durata:</td>
+				<td>Durata: </td>
 				<td><input th:field="*{durata}" type="text" required /></td>
 				<td th:if="${#fields.hasErrors('durata')}" th:errors="*{durata}" th:style="'color:red'"></td>
 			</tr>
 			<tr>
-				<td>Descrizione:</td>
+				<td>Descrizione: </td>
 				<td><input th:field=*{descrizione} type="text"/></td>
+				<td th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}" th:style="'color:red'"></td>
+			</tr>
+			<tr>
+				<td>Locandina: </td>
+				<td><input type="file" name="image" accept="image/png, image/jpeg" required /></td>
 				<td th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}" th:style="'color:red'"></td>
 			</tr>
 		</table>
