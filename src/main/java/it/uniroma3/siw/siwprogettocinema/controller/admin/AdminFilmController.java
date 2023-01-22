@@ -42,7 +42,7 @@ public class AdminFilmController {
 	}
 	
 	@PostMapping("/admin/film")
-	public String createFilm(@RequestParam("image") MultipartFile multipartFile, @Valid @ModelAttribute("film") Film film, BindingResult bindingResult, Model model)
+	public String saveFilm(@RequestParam("image") MultipartFile multipartFile, @Valid @ModelAttribute("film") Film film, BindingResult bindingResult, Model model)
 			throws IOException {
 		this.filmValidator.validate(film, bindingResult);
 		if(!bindingResult.hasErrors()) {
@@ -52,7 +52,7 @@ public class AdminFilmController {
 	        FileUploadUtil.saveFile(uploadDir, savedFilm.getId().toString(), multipartFile);
 			return "redirect:/admin/film";
 		}
-		else return "film/filmForm";
+		return "film/filmForm";
 	}
 	
 	@GetMapping("/admin/edit/film/{id}")

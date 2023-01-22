@@ -37,13 +37,13 @@ public class AdminSalaController {
 	}
 	
 	@PostMapping("/admin/sala")
-	public String createSala(@Valid @ModelAttribute("sala") Sala sala, BindingResult bindingResult, Model model) {
+	public String saveSala(@Valid @ModelAttribute("sala") Sala sala, BindingResult bindingResult, Model model) {
 		this.salaValidator.validate(sala, bindingResult);
 		if(!bindingResult.hasErrors()) {
 			this.salaService.save(sala);
 			return "redirect:/admin/sale";
 		}
-		else return "sale/salaForm";
+		return "sale/salaForm";
 	}
 	
 	@GetMapping("/admin/edit/sala/{id}")

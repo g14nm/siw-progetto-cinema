@@ -1,12 +1,15 @@
 package it.uniroma3.siw.siwprogettocinema.model;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.validation.constraints.NotBlank;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Proiezione {
@@ -15,11 +18,8 @@ public class Proiezione {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@NotBlank
-	private String giorno;
-	
-	@NotBlank
-	private String ora;
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+	private LocalDateTime data;
 	
 	@ManyToOne
 	private Film film;
@@ -35,20 +35,12 @@ public class Proiezione {
 		this.id = id;
 	}
 	
-	public String getGiorno() {
-		return this.giorno;
+	public LocalDateTime getData() {
+		return this.data;
 	}
-
-	public void setGiorno(String giorno) {
-		this.giorno = giorno;
-	}
-
-	public String getOra() {
-		return this.ora;
-	}
-
-	public void setOra(String ora) {
-		this.ora = ora;
+	
+	public void setData(LocalDateTime data) {
+		this.data = data;
 	}
 
 	public Film getFilm() {
@@ -67,15 +59,15 @@ public class Proiezione {
 		this.sala = sala;
 	}
 
-	@Override
 	public boolean equals(Object o) {
 		if(o == null || this.getClass() != o.getClass()) return false;
 		Proiezione proiezione = (Proiezione)o;
-		return this.giorno == proiezione.getGiorno() && this.ora == proiezione.getOra() && this.film == proiezione.getFilm();
+		return this.data.equals(proiezione.getData()) && this.film.getId() == proiezione.getFilm().getId() && this.sala.getId() == proiezione.getSala().getId();
 	}
 	
 	@Override
 	public int hashCode() {
-		return this.giorno.hashCode() + this.ora.hashCode() + this.film.hashCode();
+		return this.data.hashCode() + this.film.hashCode() + this.sala.hashCode();
 	}
+	
 }

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title='Proiezioni')"> </head>
+<body>
+	<header th:replace="fragments/admin_base.html :: intestazione"></header>
+	<section th:if="${#lists.isEmpty(proiezioni)}">
+		<h4>Nessuna proiezione presente</h4>
+	</section>
+	<section th:unless="${#lists.isEmpty(proiezioni)}">
+		<h4>Elenco proiezioni</h4>
+		<table>
+			<tr>
+				<th>DATA</th>
+				<th>FILM</th>
+				<th>SALA</th>
+			</tr>
+			<tr th:each="proiezione : ${proiezioni}">
+				<td th:text="${#temporals.format(proiezione.data, 'dd-MM-yyyy HH:mm')}">01/01/00 00:00</td>
+				<td th:text="${proiezione.film.titolo}">Film</td>
+				<td th:text="${proiezione.sala.nome}">Sala</td>
+				<td><a th:href="@{'/admin/edit/proiezione/' + ${proiezione.id}}">Modifica</a></td>
+				<td><a th:href="@{'/admin/delete/proiezione/' + ${proiezione.id}}">Rimuovi</a></td>
+			</tr>
+		</table>
+	</section>
+	<section>
+		<a th:href="@{/admin/proiezioneForm}">Aggiungi proiezione</a>
+	</section>
+</body>
+</html>
