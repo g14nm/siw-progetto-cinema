@@ -2,6 +2,7 @@ package it.uniroma3.siw.siwprogettocinema.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,7 +25,7 @@ public class Film {
 	
 	private String descrizione;
 	
-	@OneToMany(mappedBy = "film")
+	@OneToMany(mappedBy = "film", cascade = CascadeType.REMOVE)
 	private List<Proiezione> proiezioni;
 	
 	public Long getId() {
