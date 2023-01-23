@@ -23,6 +23,8 @@ import it.uniroma3.siw.siwprogettocinema.service.FilmService;
 @Controller
 public class AdminFilmController {
 	
+	final String UPLOAD_DIRECTORY = "locandine/";  
+	
 	@Autowired
 	private FilmValidator filmValidator;
 	
@@ -38,7 +40,7 @@ public class AdminFilmController {
 	@GetMapping("/admin/film")
 	public String getSale(Model model) {
 		model.addAttribute("films", this.filmService.findAll());
-		return "film/film";
+		return "film/adminFilm";
 	}
 	
 	@PostMapping("/admin/film")
@@ -48,8 +50,7 @@ public class AdminFilmController {
 		if(!bindingResult.hasErrors()) {
 			Film savedFilm = this.filmService.save(film);
 			
-			String uploadDir = "locandine/";
-	        FileUploadUtil.saveFile(uploadDir, savedFilm.getId().toString(), multipartFile);
+	        FileUploadUtil.saveFile(UPLOAD_DIRECTORY, savedFilm.getId().toString(), multipartFile);
 			return "redirect:/admin/film";
 		}
 		return "film/filmForm";
@@ -86,8 +87,9 @@ public class AdminFilmController {
 	}
 	
 	@PostMapping("/admin/delete/film/{id}")
-	public String deleteFilm(@PathVariable Long id) {
+	public String deleteFilm(@PathVariable Long id) throws IOException{
 		this.filmService.deleteById(id);
+		FileUploadUtil.deleteFile(UPLOAD_DIRECTORY, id.toString());
 		return "redirect:/admin/film";
 	}
 
