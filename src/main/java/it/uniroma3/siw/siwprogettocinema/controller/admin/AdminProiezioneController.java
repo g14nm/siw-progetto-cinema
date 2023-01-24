@@ -50,6 +50,7 @@ public class AdminProiezioneController {
 	public String saveProiezione(@Valid @ModelAttribute("proiezione") Proiezione proiezione, BindingResult bindingResult, Model model) {
 		this.proiezioneValidator.validate(proiezione, bindingResult);
 		if(!bindingResult.hasErrors()) {
+			proiezione.setPostiRimasti(proiezione.getSala().getPosti());
 			this.proiezioneService.save(proiezione);
 			return "redirect:/admin/proiezioni";
 		}
