@@ -22,6 +22,8 @@ public class Proiezione {
 	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
 	private LocalDateTime data;
 	
+	private Integer postiRimasti;
+	
 	@ManyToOne
 	private Film film;
 	
@@ -43,6 +45,14 @@ public class Proiezione {
 	
 	public void setData(LocalDateTime data) {
 		this.data = data;
+	}
+	
+	public Integer getPostiRimasti() {
+		return this.postiRimasti;
+	}
+	
+	public void setPostiRimasti(Integer posti) {
+		this.postiRimasti = posti;
 	}
 
 	public Film getFilm() {
