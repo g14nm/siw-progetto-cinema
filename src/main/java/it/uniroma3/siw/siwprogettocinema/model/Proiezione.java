@@ -74,12 +74,12 @@ public class Proiezione {
 	public boolean equals(Object o) {
 		if(o == null || this.getClass() != o.getClass()) return false;
 		Proiezione proiezione = (Proiezione)o;
-		return this.data.equals(proiezione.getData()) && this.film.getId() == proiezione.getFilm().getId() && this.sala.getId() == proiezione.getSala().getId();
+		return this.data.equals(proiezione.getData()) && this.sala.getId() == proiezione.getSala().getId();
 	}
 	
 	@Override
 	public int hashCode() {
-		return this.data.hashCode() + this.film.hashCode() + this.sala.hashCode();
+		return this.data.hashCode() + this.sala.hashCode();
 	}
 	
 }

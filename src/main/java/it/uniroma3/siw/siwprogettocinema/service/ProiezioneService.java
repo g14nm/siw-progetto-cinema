@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import it.uniroma3.siw.siwprogettocinema.model.Film;
 import it.uniroma3.siw.siwprogettocinema.model.Proiezione;
 import it.uniroma3.siw.siwprogettocinema.model.Sala;
 import it.uniroma3.siw.siwprogettocinema.repository.ProiezioneRepository;
@@ -18,6 +17,7 @@ public class ProiezioneService {
 	private ProiezioneRepository proiezioneRepostitory;
 	
 	public Proiezione save(Proiezione proiezione) {
+		proiezione.getFilm().getProiezioni().add(proiezione);
 		return this.proiezioneRepostitory.save(proiezione);
 	}
 	
@@ -29,8 +29,8 @@ public class ProiezioneService {
 		return this.proiezioneRepostitory.findById(id).get();
 	}
 	
-	public boolean existsByDataAndFilmAndSala(LocalDateTime data, Film film, Sala sala) {
-		return this.proiezioneRepostitory.existsByDataAndFilmAndSala(data, film, sala);
+	public boolean existsByDataAndSala(LocalDateTime data, Sala sala) {
+		return this.proiezioneRepostitory.existsByDataAndSala(data, sala);
 	}
 	
 	public void deleteById(Long id) {

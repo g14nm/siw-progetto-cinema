@@ -23,7 +23,7 @@ public class ProiezioneValidator implements Validator {
 	public void validate(Object target, Errors errors) {
 		Proiezione proiezione = (Proiezione)target;
 		
-		if(proiezioneService.existsByDataAndFilmAndSala(proiezione.getData(), proiezione.getFilm(), proiezione.getSala()))
+		if(proiezioneService.existsByDataAndSala(proiezione.getData(), proiezione.getSala()))
 			errors.rejectValue("data", "duplicate");
 	}
 
