@@ -1,10 +1,17 @@
 package it.uniroma3.siw.siwprogettocinema.authentication.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import it.uniroma3.siw.siwprogettocinema.model.Prenotazione;
 
 @Entity
 @Table(name = "users") // cambiamo nome perchè in postgres user e' una parola riservata
@@ -19,6 +26,10 @@ public class User {
 	private String cognome;
 	
 	private String email;
+	
+	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@JoinColumn(name = "users_id")
+	private List<Prenotazione> prenotazioni;
 	
 	public Long getId() {
 		return this.id;
@@ -51,4 +62,17 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	public List<Prenotazione> getPrenotazioni() {
+		return this.prenotazioni;
+	}
+	
+	public void setPrenotazioni(List<Prenotazione> prenotazioni) {
+		this.prenotazioni = prenotazioni;
+	}
+	
+	public boolean addPrenotazione(Prenotazione prenotazione) {
+		return this.prenotazioni.add(prenotazione);
+	}
+	
 }

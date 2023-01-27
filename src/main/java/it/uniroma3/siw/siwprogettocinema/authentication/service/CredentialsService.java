@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import it.uniroma3.siw.siwprogettocinema.authentication.model.Credentials;
+import it.uniroma3.siw.siwprogettocinema.authentication.model.User;
 import it.uniroma3.siw.siwprogettocinema.authentication.repository.CredentialsRepository;
 
 @Service
@@ -36,5 +37,9 @@ public class CredentialsService {
         credentials.setRole(Credentials.DEFAULT_ROLE);
         credentials.setPassword(this.passwordEncoder.encode(credentials.getPassword()));
         return this.credentialsRepository.save(credentials);
+    }
+    
+    public User getUser(Credentials credentials) {
+    	return credentials.getUser();
     }
 }

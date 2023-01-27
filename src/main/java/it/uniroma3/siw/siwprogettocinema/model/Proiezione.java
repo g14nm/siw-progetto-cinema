@@ -25,6 +25,7 @@ public class Proiezione {
 	private Integer postiRimasti;
 	
 	@ManyToOne
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Film film;
 	
 	@ManyToOne
@@ -69,6 +70,14 @@ public class Proiezione {
 
 	public void setSala(Sala sala) {
 		this.sala = sala;
+	}
+	
+	public void decreasePostiRimasti(Integer toDecrease) {
+		this.postiRimasti -= toDecrease;
+	}
+	
+	public void increasePostiRimasti(Integer toIncrease) {
+		this.postiRimasti += toIncrease;
 	}
 
 	public boolean equals(Object o) {

@@ -2,28 +2,31 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/base.html :: headerfiles(title='Film')"> </head>
 <body>
-	<header th:replace="fragments/user_base.html :: intestazione"></header>
+	<header th:replace="fragments/admin_base.html :: intestazione"></header>
 	<section th:if="${#lists.isEmpty(films)}">
 		<h4>Nessun film presente</h4>
 	</section>
 	<section th:unless="${#lists.isEmpty(films)}">
 		<h4>Elenco film</h4>
 		<table>
+			<tr>
+				<th>ID</th>
+				<th>TITOLO</th>
+				<th>DURATA</th>
+				<th>DESCRIZIONE</th>
+			</tr>
 			<tr th:each="film : ${films}">
-				<td><img th:src="@{'/locandine/' + ${film.id}}" style="width:216px;height:300px"/></td>
+				<td th:text="${film.id}"></td>
 				<td th:text="${film.titolo}">Titolo</td>
 				<td th:text="${film.durata}">0 min</td>
 				<td th:text="${film.descrizione}"></td>
-				<td>
-					<div th:each="proiezione: ${film.proiezioni}">
-						<span th:text="${#temporals.format(proiezione.data, 'dd/MM/yyyy HH:mm')}">01/01/2000 00:00</span>
-						<span>
-							<a th:href="@{'/user/prenotazione/' + ${proiezione.id}}"><button type="button">Prenota</button></a>
-						</span>
-					</div>	
-				</td>
+				<td><a th:href="@{'/admin/edit/film/' + ${film.id}}">Modifica</a></td>
+				<td><a th:href="@{'/admin/delete/film/' + ${film.id}}">Rimuovi</a></td>
 			</tr>
 		</table>
+	</section>
+	<section>
+		<a th:href="@{/admin/filmForm}">Aggiungi film</a>
 	</section>
 </body>
 </html>
