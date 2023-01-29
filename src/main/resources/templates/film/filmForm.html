@@ -19,14 +19,23 @@
 				<td th:if="${#fields.hasErrors('durata')}" th:errors="*{durata}" th:style="'color:red'"></td>
 			</tr>
 			<tr>
-				<td>Descrizione: </td>
-				<td><input th:field="*{descrizione}" type="text"/></td>
-				<td th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}" th:style="'color:red'"></td>
+				<td>Regista:</td>
+				<td><input th:field=*{regista} type="text" required/></td>
+				<td th:if="${#fields.hasErrors('regista')}" th:errors="*{regista}" th:style="'color:red'"></td>
+			</tr>
+			<tr>
+				<td>Genere:</td>
+				<td><input th:field=*{genere} type="text" required/></td>
+				<td th:if="${#fields.hasErrors('genere')}" th:errors="*{genere}" th:style="'color:red'"></td>
+			</tr>
+			<tr>
+				<td>Trama:</td>
+				<td><input th:field=*{trama} type="text"/></td>
+				<td th:if="${#fields.hasErrors('trama')}" th:errors="*{trama}" th:style="'color:red'"></td>
 			</tr>
 			<tr>
 				<td>Locandina: </td>
 				<td><input type="file" name="image" accept="image/png, image/jpeg" required /></td>
-				<td th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}" th:style="'color:red'"></td>
 			</tr>
 		</table>
 		<div>

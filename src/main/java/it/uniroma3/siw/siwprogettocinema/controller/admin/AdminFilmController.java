@@ -71,7 +71,9 @@ public class AdminFilmController {
 		if(!bindingResult.hasErrors()) {
 			film.setTitolo(newFilm.getTitolo());
 			film.setDurata(newFilm.getDurata());
-			film.setDescrizione(newFilm.getDescrizione());
+			film.setRegista(newFilm.getRegista());
+			film.setGenere(newFilm.getGenere());
+			film.setTrama(newFilm.getTrama());
 			this.filmService.save(film);
 			return "redirect:/admin/film";
 		}

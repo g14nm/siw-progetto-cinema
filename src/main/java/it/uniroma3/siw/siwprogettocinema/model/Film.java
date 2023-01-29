@@ -23,7 +23,13 @@ public class Film {
 	@NotBlank
 	private String durata;
 	
-	private String descrizione;
+	@NotBlank
+	private String regista;
+	
+	@NotBlank
+	private String genere;
+	
+	private String trama;
 	
 	@OneToMany(mappedBy = "film", cascade = CascadeType.REMOVE)
 	private List<Proiezione> proiezioni;
@@ -52,12 +58,28 @@ public class Film {
 		this.durata = durata.trim();
 	}
 
-	public String getDescrizione() {
-		return this.descrizione;
+	public String getRegista() {
+		return this.regista;
 	}
 
-	public void setDescrizione(String descrizione) {
-		this.descrizione = descrizione.trim();
+	public void setRegista(String regista) {
+		this.regista = regista.trim();
+	}
+
+	public String getGenere() {
+		return this.genere;
+	}
+
+	public void setGenere(String genere) {
+		this.genere = genere.trim();
+	}
+
+	public String getTrama() {
+		return this.trama;
+	}
+
+	public void setTrama(String trama) {
+		this.trama = trama.trim();
 	}
 
 	public List<Proiezione> getProiezioni() {

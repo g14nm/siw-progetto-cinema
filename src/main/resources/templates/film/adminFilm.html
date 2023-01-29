@@ -13,13 +13,15 @@
 				<th>ID</th>
 				<th>TITOLO</th>
 				<th>DURATA</th>
-				<th>DESCRIZIONE</th>
+				<th>REGISTA</th>
+				<th>GENERE</th>
 			</tr>
 			<tr th:each="film : ${films}">
 				<td th:text="${film.id}"></td>
 				<td th:text="${film.titolo}">Titolo</td>
 				<td th:text="${film.durata}">0 min</td>
-				<td th:text="${film.descrizione}"></td>
+				<td th:text="${film.regista}">Regista</td>
+				<td th:text="${film.genere}">Genere</td>
 				<td><a th:href="@{'/admin/edit/film/' + ${film.id}}">Modifica</a></td>
 				<td><a th:href="@{'/admin/delete/film/' + ${film.id}}">Rimuovi</a></td>
 			</tr>
