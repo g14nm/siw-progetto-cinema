@@ -63,7 +63,8 @@ public class AdminFilmController {
 	}
 	
 	@PostMapping("/admin/edit/film/{id}")
-	public String editFilm(@PathVariable Long id, @Valid @ModelAttribute("film") Film newFilm, BindingResult bindingResult) {
+	public String editFilm(@RequestParam("image") MultipartFile multipartFile, @PathVariable Long id, @Valid @ModelAttribute("film") Film newFilm, BindingResult bindingResult)
+			throws IOException{
 		Film film = this.filmService.findById(id);
 		
 		if(!film.equals(newFilm))
@@ -75,6 +76,7 @@ public class AdminFilmController {
 			film.setGenere(newFilm.getGenere());
 			film.setTrama(newFilm.getTrama());
 			this.filmService.save(film);
+			if(!multipartFile.isEmpty()) FileUploadUtil.saveFile(UPLOAD_DIRECTORY, film.getId().toString(), multipartFile);
 			return "redirect:/admin/film";
 		}
 		else {

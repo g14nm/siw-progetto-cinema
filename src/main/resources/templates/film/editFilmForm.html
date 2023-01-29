@@ -6,7 +6,7 @@
 	<div>
 		<h4>Modifica film</h4>
 	</div>
-	<form th:action="@{'/admin/edit/film/' + ${film.id}}" method="POST" th:object="${film}">
+	<form th:action="@{'/admin/edit/film/' + ${film.id}}" method="POST" th:object="${film}" enctype="multipart/form-data">
 		<table>
 			<tr>
 				<td>Titolo:</td>
@@ -20,12 +20,12 @@
 			</tr>
 			<tr>
 				<td>Regista:</td>
-				<td><input th:field=*{regista} type="text"/></td>
+				<td><input th:field=*{regista} type="text" required/></td>
 				<td th:if="${#fields.hasErrors('regista')}" th:errors="*{regista}" th:style="'color:red'"></td>
 			</tr>
 			<tr>
 				<td>Genere:</td>
-				<td><input th:field=*{genere} type="text"/></td>
+				<td><input th:field=*{genere} type="text" required/></td>
 				<td th:if="${#fields.hasErrors('genere')}" th:errors="*{genere}" th:style="'color:red'"></td>
 			</tr>
 			<tr>
@@ -35,7 +35,7 @@
 			</tr>
 			<tr>
 				<td>Locandina: </td>
-				<td><input type="file" name="image" accept="image/png, image/jpeg" required /></td>
+				<td><input type="file" name="image" accept="image/png, image/jpeg" /></td>
 			</tr>
 		</table>
 		<div>
