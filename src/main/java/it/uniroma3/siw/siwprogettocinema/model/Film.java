@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -31,6 +32,7 @@ public class Film {
 	
 	private String trama;
 	
+	@OrderBy("data")
 	@OneToMany(mappedBy = "film", cascade = CascadeType.REMOVE)
 	private List<Proiezione> proiezioni;
 	
