@@ -31,16 +31,22 @@ public class AdminFilmController {
 	@Autowired
 	private FilmService filmService;
 	
+	@GetMapping("/admin/film")
+	public String getFilms(Model model) {
+		model.addAttribute("films", this.filmService.findAll());
+		return "film/adminFilm";
+	}
+	
+	@GetMapping("/admin/film/{id}")
+	public String getFilm(@PathVariable Long id, Model model) {
+		model.addAttribute("film", this.filmService.findById(id));
+		return "film/film";
+	}
+	
 	@GetMapping("/admin/filmForm")
 	public String getFilmForm(Model model) {
 		model.addAttribute("film", new Film());
 		return "film/filmForm";
-	}
-	
-	@GetMapping("/admin/film")
-	public String getSale(Model model) {
-		model.addAttribute("films", this.filmService.findAll());
-		return "film/adminFilm";
 	}
 	
 	@PostMapping("/admin/film")

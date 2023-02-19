@@ -32,18 +32,18 @@ public class AdminProiezioneController {
 	@Autowired
 	private SalaService salaService;
 	
+	@GetMapping("/admin/proiezioni")
+	public String getProiezioni(Model model) {
+		model.addAttribute("proiezioni", this.proiezioneService.findAll());
+		return "proiezioni/proiezioni";
+	}
+	
 	@GetMapping("/admin/proiezioneForm")
 	public String getProiezioneForm(Model model) {
 		model.addAttribute("proiezione", new Proiezione());
 		model.addAttribute("films", this.filmService.findAll());
 		model.addAttribute("sale", this.salaService.findAll());
 		return "proiezioni/proiezioneForm";
-	}
-	
-	@GetMapping("/admin/proiezioni")
-	public String getProiezioni(Model model) {
-		model.addAttribute("proiezioni", this.proiezioneService.findAll());
-		return "proiezioni/proiezioni";
 	}
 	
 	@PostMapping("/admin/proiezione")

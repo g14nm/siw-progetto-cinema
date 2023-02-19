@@ -24,16 +24,16 @@ public class AdminSalaController {
 	@Autowired
 	private SalaService salaService;
 	
-	@GetMapping("/admin/salaForm")
-	public String getSalaForm(Model model) {
-		model.addAttribute("sala", new Sala());
-		return "sale/salaForm";
-	}
-	
 	@GetMapping("/admin/sale")
 	public String getSale(Model model) {
 		model.addAttribute("sale", this.salaService.findAll());
 		return "sale/sale";
+	}
+	
+	@GetMapping("/admin/salaForm")
+	public String getSalaForm(Model model) {
+		model.addAttribute("sala", new Sala());
+		return "sale/salaForm";
 	}
 	
 	@PostMapping("/admin/sala")

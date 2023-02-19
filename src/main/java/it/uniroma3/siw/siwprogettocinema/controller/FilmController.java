@@ -1,4 +1,4 @@
-package it.uniroma3.siw.siwprogettocinema.controller.user;
+package it.uniroma3.siw.siwprogettocinema.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import it.uniroma3.siw.siwprogettocinema.service.FilmService;
 
 @Controller
-public class UserFilmController {
+public class FilmController {
 
 	@Autowired
 	private FilmService filmService;
 	
-	@GetMapping("/user/film")
+	@GetMapping("/film")
 	public String getFilms(Model model) {
 		model.addAttribute("films", this.filmService.findAll());
 		return "film/films";
