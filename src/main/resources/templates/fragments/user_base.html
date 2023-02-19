@@ -2,10 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
 	<header th:fragment="intestazione">
+		<h1>Siw Cinema</h1>
 		<nav>
-			<a th:href="@{/default}">Home</a>
+			<a th:href="@{/user/home}">Home</a>
 			<a th:href="@{/user/film}">Film</a>
-			<a th:href="@{/user/prenotazioni}">Le mie prenotazioni</a>
+			<a th:href="@{/user/prenotazioni}">Prenotazioni</a>
 			<a th:href="@{/logout}">Logout</a>
 		</nav>
 	</header>

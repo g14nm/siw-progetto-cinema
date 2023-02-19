@@ -1,30 +1,26 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="headerfiles(title)">
-	<meta charset="UTF-8" />
+	<meta charset="UTF-8"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link th:href="@{/css/my-style.css}" rel="stylesheet">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<title th:text="${title}"></title>
 </head>
 <body>
 	<header th:fragment="intestazione">
-		<div>
-			<div>
-				<a th:href="@{/login}">Login</a>
-   			</div>
-			<div>
-				<a th:href="@{/register}">Registrati</a>
-   			</div>
-    	</div>
+		<h1>Siw Catering</h1>
+		<nav>
+			<a th:href="@{/}">Home</a>
+			<a th:href="@{/films}">Film</a>
+			<a th:href="@{/login}">Accedi</a>
+			<a th:href="@{/register}">Registrati</a>
+    	</nav>
 	</header>
-
-	<p>Go to the next page to see fragments in action</p>
-	<aside>
-		<div>This is a sidebar</div>
-	</aside>
-	<div class="another">This is another sidebar</div>
 	
-	<footer th:fragment="fondo(home)">
-		<a th:href="@{${home}}">Home</a>
+	<footer th:fragment="fondo">
+		<span class="material-icons">copyright</span>
+		<span style="margin-left: 5px;">2023 Siw Catering<span>	
 	</footer>
 </body>
 </html>
