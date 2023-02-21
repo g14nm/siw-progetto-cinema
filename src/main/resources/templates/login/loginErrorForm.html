@@ -3,6 +3,7 @@
 <head th:replace="fragments/base.html :: headerfiles(title='Login')"> </head>
 <body>
 	<header th:replace="fragments/base.html :: intestazione"></header>
+	<h3 class="error-text">Username e/o password non validi</h3>
 	<section class="login-form">
 		<form th:action="@{/login}" method="POST">
 			<div>Accedi</div>
