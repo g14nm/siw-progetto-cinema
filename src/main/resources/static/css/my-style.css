@@ -32,9 +32,13 @@ header a {
 	text-decoration: none;
 }
 
+header a div {
+	font-size: 2rem;
+	font-weight: bold;
+}
+
 header ul {
   	list-style: none;
-  	height: 100%;
   	display: flex;
   	align-items: center;
   	justify-content: space-around;
@@ -81,6 +85,15 @@ header ul li:hover {
 }
 
 @media only screen and (max-width: 600px) {
+	header {
+		padding: 0 30px;
+		justify-content: space-between;
+	}
+	
+	header a div {
+  		font-size: 1.5rem;
+  	}
+  	
  	header nav {
     	display: none;
   	}
@@ -116,7 +129,6 @@ footer {
 .login-form form {
  	height: 100%;
   	width: 350px;
-  	flex-shrink: 0;
  	font-size: 2rem;
   	box-shadow: 0 0 15px 0 rgba(0,0,0,0.2);
   	border-radius: 5px;
@@ -133,19 +145,10 @@ footer {
 
 @media only screen and (max-width: 600px) {
 	.login-form form {
- 		height: 100%;
   		width: 95%;
- 		font-size: 2rem;
-  		box-shadow: 0 0 15px 0 rgba(0,0,0,0.2);
-  		border-radius: 5px;
-  		display: flex;
-  		flex-direction: column;
-  		justify-content: space-around;
-  		align-items: center;
   	}
   	
   	.login-form div {
-  		height: 12%;
   		width: 90%;
   	}
 }
@@ -186,4 +189,157 @@ input:focus {
 	color: red;
 	text-align: center;
 	margin-top: 50px;
+}
+
+.film-grid {
+	margin-top: 40px;
+	padding-bottom: 130px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.film-grid > div {
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+.film-item {
+	height: 300px;
+	width: 800px;
+	border-radius: 5px;
+	margin-top: 40px;
+	display: flex;
+	align-items: center;
+	box-shadow:0 0 15px 0 rgba(0,0,0,0.2);
+	background-color: #F5F5F5;
+}
+
+.film-locandina {
+	height: 90%;
+	width: 30%;
+	display: flex;
+	justify-content: center;
+}
+
+.film-locandina img {
+	max-height: 100%;
+	max-width: 90%;
+	border: solid 1px;
+	border-radius: 5px;
+	border-color: lightgrey;
+	padding: 5px;
+}
+
+.film-details {
+	height: 90%;
+	width: 45%;
+	display: flex;
+	flex-direction: column;
+}
+
+.film-details-titolo {
+	font-size: 1.4rem;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+.film-details-durata {
+	display: flex;
+	color: red;
+	align-items: center;
+	margin-bottom: 15px;
+}
+
+.film-details-detail {
+	margin-bottom: 10px;
+}
+
+.film-details-name {
+	font-weight: bold;
+}
+
+.film-orari {
+	height: 90%;
+	width: 25%;
+	display: flex;
+	flex-direction: column;
+	overflow: auto;
+}
+
+.film-orario {
+	height: 30%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	flex-shrink: 0;
+	margin-bottom: 10px;
+}
+
+.film-orario-day {
+	height: 50%;
+	width: 100%;
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+}
+
+.film-orario a {
+	height: 50%;
+	width: 90%;
+}
+
+.film-orario a button {
+	height: 100%;
+	width: 100%;
+ 	background-color: #2B9CFF;
+ 	box-shadow:0 0 15px 0 rgba(0,0,0,0.2);
+ 	border: 0;
+  	border-radius: 5px;
+  	cursor: pointer;
+  	font-weight: bold;
+  	color: white;
+}
+
+@media only screen and (max-width: 850px) {
+	.film-item {
+		height: 100%;
+		width: 95%;
+		display: flex;
+		flex-direction: column;
+	}
+	
+	.film-locandina {
+		height: 350px;
+		width: 90%;
+		align-items: center;
+	}
+	
+	.film-locandina img {
+		max-height: 95%;
+		max-width: 100%;
+	}
+	
+	.film-details {
+		width: 90%;
+	}
+	
+	.film-details-titolo {
+		margin-top: 10px;
+		text-align: center;
+	}
+	
+	.film-orari {
+		height: 200px;
+		width: 90%;
+		margin-bottom: 25px;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	
+	.film-orario {
+		height: 45%;
+		width: 160px;
+	}
 }

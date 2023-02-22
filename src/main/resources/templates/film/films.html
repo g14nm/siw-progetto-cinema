@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title='Film')"> </head>
+<body>
+	<header sec:authorize="hasAuthority('DEFAULT')" th:replace="fragments/user_base.html :: intestazione"></header>
+	<header sec:authorize="!isAuthenticated()" th:replace="fragments/base.html :: intestazione"></header>
+	<section class="film-grid" >
+		<div>FILM IN SALA</div>
+		<article class="film-item" th:each="film : ${films}" th:if="${not #lists.isEmpty(film.proiezioni)}">
+			<a class="film-locandina" th:href="@{'/film/' + ${film.id}}">
+				<img th:src="@{'/locandine/' + ${film.id}}"/>
+			</a>
+			<div class="film-details">
+				<div class="film-details-titolo" th:text="${film.titolo}">Titolo</div>
+				<div class="film-details-durata">
+					<span class="material-icons">schedule</span>
+					<span th:text="${film.durata}">0 min</span>
+				</div>
+				<div class="film-details-detail">
+					<span class="film-details-name">Regista: </span><span th:text="${film.regista}">Mario Rossi</span>
+				</div>
+				<div class="film-details-detail">
+					<span class="film-details-name">Genere: </span><span th:text="${film.genere}">Azione</span>
+				</div>
+			</div>
+			<div class="film-orari">
+				<div class="film-orario" th:each="proiezione: ${film.proiezioni}">
+					<div class="film-orario-day">
+						<span class="material-icons">calendar_month</span>
+						<span th:text="${#temporals.dayOfWeekNameShort(proiezione.data)} + ' ' + ${#temporals.format(proiezione.data, 'dd/MM/yyyy')}">Lun 01/01/2000</span>
+					</div>
+					<a th:href="@{'/user/prenotazione/' + ${proiezione.id}}">
+						<button type="button">
+							<div th:text="'SALA ' + ${proiezione.sala.nome}">
+								Sala
+							</div>
+							<div th:text="${#temporals.format(proiezione.data, 'HH:mm')}">
+								00:00
+							</div>
+						</button>
+					</a>
+				</div>
+			</div>	
+		</article>
+	</section>
+	<footer th:replace="fragments/base.html :: fondo"></footer>
+</body>
+</html>
