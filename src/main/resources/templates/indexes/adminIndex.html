@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title='Home')"> </head>
+<body>
+	<header th:replace="fragments/admin_base.html :: intestazione"></header>
+	<section class="admin-index-section">
+		<a th:href="@{/admin/film}">
+			<img th:src="@{/images/film-icon.png}">
+			<div>Film</div>
+		</a>
+		<a th:href="@{/admin/sale}">
+			<img th:src="@{/images/sala-icon.png}">
+			<div>Sale</div>
+		</a>
+		<a th:href="@{/admin/proiezioni}">
+			<img th:src="@{/images/proiezione-icon.png}">
+			<div>Proiezioni</div>
+		</a>
+	</section>
+	<footer th:replace="fragments/base.html :: fondo"></footer>
+</body>
+</html>
