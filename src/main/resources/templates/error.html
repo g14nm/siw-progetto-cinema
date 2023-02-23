@@ -1,20 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-   <head>
-      <style>div {
-background-color:lightblue;
-}</style>
-   </head>
-   <h1>Error!</h1>
-   <div class="errorPage">
-      <br />
-      <p>
-         There seems to be a problem with the page you requested
-(
-         <span th:text="${path}" />
-         ).
-      </p>
-      <p th:text="${'Details: ' + message}" />
-      <p th:text="${'Status: ' + status}" />
-   </div>
+<head th:replace="fragments/base.html :: headerfiles(title='Error')"></head>
+<body>
+	<header sec:authorize="!isAuthenticated()" th:replace="fragments/base.html :: intestazione"></header>
+	<header sec:authorize="hasAuthority('DEFAULT')" th:replace="fragments/user_base.html :: intestazione"></header>
+	<header sec:authorize="hasAuthority('ADMIN')" th:replace="fragments/admin_base.html :: intestazione"></header>
+   	<h1>Errore!</h1>
+   	<div style="background-color:lightblue;">
+      	<br/>
+      	<p>C'è un problema con la risorsa richiesta: <span th:text="${path}"/>.</p>
+      	<p th:text="${'Dettagli: ' + message}" />
+      	<p th:text="${'Stato: ' + status}" />
+   	</div>
+   	<footer th:replace="fragments/base.html :: fondo"></footer>
+</body>
 </html>
