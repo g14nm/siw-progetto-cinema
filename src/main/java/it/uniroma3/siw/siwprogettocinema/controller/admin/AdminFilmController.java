@@ -34,7 +34,7 @@ public class AdminFilmController {
 	@GetMapping("/admin/film")
 	public String getFilms(Model model) {
 		model.addAttribute("films", this.filmService.findAll());
-		return "film/adminFilm";
+		return "film/adminFilms";
 	}
 	
 	@GetMapping("/admin/film/{id}")

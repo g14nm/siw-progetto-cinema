@@ -3,26 +3,42 @@
 <head th:replace="fragments/base.html :: headerfiles(title='Sale')"> </head>
 <body>
 	<header th:replace="fragments/admin_base.html :: intestazione"></header>
-	<section th:if="${#lists.isEmpty(sale)}">
-		<h4>Nessuna sala presente</h4>
-	</section>
-	<section th:unless="${#lists.isEmpty(sale)}">
-		<h4>Elenco sale</h4>
-		<table>
+	<section class="table-section">
+		<div>
+			<a th:href="@{/admin/home}"><span class="material-icons">arrow_back</span></a>
+			<a th:href="@{/admin/salaForm}">
+				<button>
+					<span class="material-icons">add</span>
+					<span>Aggiungi sala</span>
+				</button>
+			</a>
+		</div>
+		<h1 th:if="${#lists.isEmpty(sale)}">Nessuna sala presente</h1>
+		<table th:unless="${#lists.isEmpty(sale)}">
 			<tr>
-				<th>NOME</th>
-				<th>POSTI</th>
+				<th>ID</th>
+				<th>Nome</th>
+				<th class="hide-2">Posti</th>
+				<th></th>
 			</tr>
 			<tr th:each="sala : ${sale}">
+				<td th:text="${sala.id}"></td>
 				<td th:text="${sala.nome}">Sala vuota</td>
-				<td th:text="${sala.posti}">0</td>
-				<td><a th:href="@{'/admin/edit/sala/' + ${sala.id}}">Modifica</a></td>
-				<td><a th:href="@{'/admin/delete/sala/' + ${sala.id}}">Rimuovi</a></td>
+				<td class="hide-2" th:text="${sala.posti}">0</td>
+				<td>
+					<a th:href="@{'/admin/sala/' + ${sala.id}}">
+						<span class="material-icons">visibility</span>
+					</a>
+					<a th:href="@{'/admin/edit/sala/' + ${sala.id}}">
+						<span class="material-icons">edit</span>
+					</a>
+					<a th:href="@{'/admin/delete/sala/' + ${sala.id}}">
+						<span class="material-icons">delete</span>
+					</a>
+				</td>
 			</tr>
 		</table>
 	</section>
-	<section>
-		<a th:href="@{/admin/salaForm}">Aggiungi sala</a>
-	</section>
+	<footer th:replace="fragments/base.html :: fondo"></footer>
 </body>
 </html>

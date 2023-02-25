@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title='Film')"> </head>
+<body>
+	<header th:replace="fragments/admin_base.html :: intestazione"></header>
+	<section class="table-section">
+		<div>
+			<a th:href="@{/admin/home}"><span class="material-icons">arrow_back</span></a>
+			<a th:href="@{/admin/filmForm}">
+				<button>
+					<span class="material-icons">add</span>
+					<span>Aggiungi film</span>
+				</button>
+			</a>
+		</div>
+		<h1 th:if="${#lists.isEmpty(films)}">Nessun film presente</h1>
+		<table th:unless="${#lists.isEmpty(films)}">
+			<tr>
+				<th>ID</th>
+				<th>Titolo</th>
+				<th class="hide-2">Durata</th>
+				<th class="hide-2">Regista</th>
+				<th class="hide-1">Genere</th>
+				<th></th>
+			</tr>
+			<tr th:each="film : ${films}">
+				<td th:text="${film.id}"></td>
+				<td th:text="${film.titolo}">Titolo</td>
+				<td class="hide-2" th:text="${film.durata}">0 min</td>
+				<td class="hide-2" th:text="${film.regista}">Regista</td>
+				<td class="hide-1" th:text="${film.genere}">Genere</td>
+				<td>
+					<a th:href="@{'/admin/film/' + ${film.id}}">
+						<span class="material-icons">visibility</span>
+					</a>
+					<a th:href="@{'/admin/edit/film/' + ${film.id}}">
+						<span class="material-icons">edit</span>
+					</a>
+					<a th:href="@{'/admin/delete/film/' + ${film.id}}">
+						<span class="material-icons">delete</span>
+					</a>
+				</td>
+			</tr>
+		</table>
+	</section>
+	<footer th:replace="fragments/base.html :: fondo"></footer>
+</body>
+</html>
