@@ -34,9 +34,6 @@
 				<td class="hide-2" th:text="${proiezione.film.titolo}">Film</td>
 				<td class="hide-2" th:text="${proiezione.sala.nome}">Sala</td>
 				<td>
-					<a th:href="@{'/admin/proiezione/' + ${proiezione.id}}">
-						<span class="material-icons">visibility</span>
-					</a>
 					<a th:href="@{'/admin/edit/proiezione/' + ${proiezione.id}}">
 						<span class="material-icons">edit</span>
 					</a>

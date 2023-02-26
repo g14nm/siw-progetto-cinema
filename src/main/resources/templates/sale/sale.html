@@ -26,9 +26,6 @@
 				<td th:text="${sala.nome}">Sala vuota</td>
 				<td class="hide-2" th:text="${sala.posti}">0</td>
 				<td>
-					<a th:href="@{'/admin/sala/' + ${sala.id}}">
-						<span class="material-icons">visibility</span>
-					</a>
 					<a th:href="@{'/admin/edit/sala/' + ${sala.id}}">
 						<span class="material-icons">edit</span>
 					</a>

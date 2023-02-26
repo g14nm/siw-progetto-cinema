@@ -589,15 +589,15 @@ button:hover {
 	opacity: 0.7;
 }
 
-.table-section table tr td a:nth-child(1) span {
+.table-section table tr td a:nth-last-child(3) span {
 	color: darkblue;
 }
 
-.table-section table tr td a:nth-child(2) span {
+.table-section table tr td a:nth-last-child(2) span {
 	color: brown;
 }
 
-.table-section table tr td a:nth-child(3) span {
+.table-section table tr td a:nth-last-child(1) span {
 	color: red;
 }
 
