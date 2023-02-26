@@ -601,8 +601,194 @@ button:hover {
 	color: red;
 }
 
+.admin-form {
+  	margin-top: 50px;
+  	padding-bottom: 130px;
+ 	display: flex;
+ 	flex-direction: column;
+	align-items: center;
+}
+
+.admin-form form {
+		width: 600px;
+		padding: 50px 20px;
+  		background-color: whitesmoke;
+  		box-shadow: 0 0 15px 0 rgba(0,0,0,0.2);
+	  	border-radius: 5px;
+  		display: flex;
+  		flex-direction: column;
+  		align-items: center;
+	}
+
+.admin-form form > :nth-child(2) {
+	font-size: 2rem;
+	margin-bottom: 50px;
+}
+
+.admin-form form label {
+	width: 100%;
+	margin-bottom: 20px;
+	display: flex;
+	flex-direction: column;
+}
+
+.admin-form form label div {
+	width: 100%;
+	margin-bottom: 5px;
+}
+
+.admin-form form label > :nth-child(1) {
+	display: flex;
+	align-items: center;
+}
+
+.admin-form form label > :nth-child(1) span {
+	width: 110px;
+	font-size: 1.1rem;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.admin-form form label > :nth-child(1) input[type=text], input[type=datetime-local] {
+	height: 35px;
+	margin-left: 20px;
+	border: solid 2px;
+	border-color: darkgrey;
+	font-size: 1rem;
+  	text-indent: 5px;
+  	flex-grow: 1;
+}
+
+.admin-form form label > :nth-child(1) input[type=datetime-local] {
+	font-family: sans-serif;
+}
+
+.admin-form form label > :nth-child(1) input[type=text]:focus, input[type=datetime-local]:focus {
+	outline: none;
+	border: solid 2px;
+	border-color: #2B9CFF;
+	transition: 0.5s;
+}
+
+.admin-form form label > :nth-child(1) input[type=file] {
+	margin-left: 20px;
+	font-size: 1rem;
+}
+
+.admin-form ::placeholder {
+	color: #808080;
+}
+
+.admin-form form label > :nth-child(2) {
+	padding-left: 130px;
+	font-size: 0.9rem;
+	color: red;
+}
+
+.admin-form textarea {
+	height: 100px;
+	margin-left: 20px;
+	padding: 5px;
+	border: solid 2px;
+	border-color: darkgrey;
+	font-family: sans-serif;
+	font-size: 1rem;
+  	flex-grow: 1;
+}
+
+.admin-form textarea:focus {
+	outline: none;
+	border: solid 2px;
+	border-color: #2B9CFF;
+	transition: 0.5s;
+}
+
+.admin-form select {
+  	height: 35px;
+	margin-left: 20px;
+	border: solid 2px;
+	border-color: darkgrey;
+	font-size: 1rem;
+  	text-indent: 5px;
+  	flex-grow: 1;
+}
+
+.admin-form select:focus {
+	outline: none;
+	border: solid 2px;
+	border-color: #2B9CFF;
+	transition: 0.5s;
+}
+
+.admin-form form > :nth-last-child(1) {
+	margin-top: 20px;
+}
+
+@media only screen and (max-width: 650px) {
+	.admin-form form {
+		width: 95%;
+	}
+	
+	.admin-form form label {
+		margin-bottom: 10px;
+	}
+	
+	.admin-form form label > :nth-child(1) {
+		flex-direction: column;
+	}
+	
+	.admin-form form label > :nth-child(1) span {
+		width: 100%;
+		justify-content: flex-start;
+		margin-bottom: 5px;
+	}
+	
+	.admin-form form label > :nth-child(1) input[type=text], input[type=datetime-local] {
+		width: 100%;
+		margin-left: 0px;
+	}
+	
+	.admin-form form label > :nth-child(1) input[type=file] {
+		width: 100%;
+		margin-left: 0px;
+	}
+	
+	.admin-form form label > :nth-child(1) textarea {
+		width: 100%;
+		margin-left: 0px;
+	}
+	
+	.admin-form form label > :nth-child(1) select {
+		width: 100%;
+		margin-left: 0px;
+	}
+	
+	.admin-form form label > :nth-child(2) {
+		padding-left: 0px;
+	}
+}
+
+@media only screen and (max-width: 350px) {
+	.admin-form form > :nth-last-child(1) {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+.admin-form form > :nth-last-child(1) button {
+	height: 35px;
+	width: 100px;
+	margin: 10px;
+	border: 0;
+	border-radius: 5px;
+	color: white;
+	font-size: 1rem;
+	font-weight: bold;
+	cursor: pointer;
+}
+
 .button-edit {
-	background-color: navy;
+	background-color: #2B9CFF;
 }
 
 .button-remove {

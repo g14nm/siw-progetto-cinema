@@ -1,5 +1,9 @@
 package it.uniroma3.siw.siwprogettocinema.controller.admin;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +47,7 @@ public class AdminProiezioneController {
 		model.addAttribute("proiezione", new Proiezione());
 		model.addAttribute("films", this.filmService.findAll());
 		model.addAttribute("sale", this.salaService.findAll());
+		model.addAttribute("mindata", this.getDataMinima());
 		return "proiezioni/proiezioneForm";
 	}
 	
@@ -56,6 +61,7 @@ public class AdminProiezioneController {
 		}
 		model.addAttribute("films", this.filmService.findAll());
 		model.addAttribute("sale", this.salaService.findAll());
+		model.addAttribute("mindata", this.getDataMinima());
 		return "proiezioni/proiezioneForm";
 	}
 	
@@ -64,6 +70,7 @@ public class AdminProiezioneController {
 		model.addAttribute("proiezione", this.proiezioneService.findById(id));
 		model.addAttribute("films", this.filmService.findAll());
 		model.addAttribute("sale", this.salaService.findAll());
+		model.addAttribute("mindata", this.getDataMinima());
 		return "proiezioni/editProiezioneForm";
 	}
 	
@@ -82,6 +89,7 @@ public class AdminProiezioneController {
 		}
 		model.addAttribute("films", this.filmService.findAll());
 		model.addAttribute("sale", this.salaService.findAll());
+		model.addAttribute("mindata", this.getDataMinima());
 		return "proiezioni/editProiezioneForm";
 	}
 	
@@ -95,6 +103,13 @@ public class AdminProiezioneController {
 	public String deleteProiezione(@PathVariable Long id) {
 		this.proiezioneService.deleteById(id);
 		return "redirect:/admin/proiezioni";
+	}
+	
+	private LocalDateTime getDataMinima() {
+		return LocalDateTime.of(
+				LocalDate.ofYearDay(LocalDate.now().getYear(),LocalDate.now().getDayOfYear()),
+				LocalTime.of(LocalDateTime.now().getHour(), LocalDateTime.now().getMinute() + 1)
+				);
 	}
 
 }

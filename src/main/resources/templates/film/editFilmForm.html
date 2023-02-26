@@ -3,45 +3,56 @@
 <head th:replace="fragments/base.html :: headerfiles(title='Edit Film')"> </head>
 <body>
 	<header th:replace="fragments/admin_base.html :: intestazione"></header>
-	<div>
-		<h4>Modifica film</h4>
-	</div>
-	<form th:action="@{'/admin/edit/film/' + ${film.id}}" method="POST" th:object="${film}" enctype="multipart/form-data">
-		<table>
-			<tr>
-				<td>Titolo:</td>
-				<td><input th:field=*{titolo} type="text" required /></td>
-				<td th:if="${#fields.hasErrors('titolo')}" th:errors="*{titolo}" th:style="'color:red'"></td>
-			</tr>		
-			<tr>
-				<td>Durata:</td>
-				<td><input th:field="*{durata}" type="text" required /></td>
-				<td th:if="${#fields.hasErrors('durata')}" th:errors="*{durata}" th:style="'color:red'"></td>
-			</tr>
-			<tr>
-				<td>Regista:</td>
-				<td><input th:field=*{regista} type="text" required/></td>
-				<td th:if="${#fields.hasErrors('regista')}" th:errors="*{regista}" th:style="'color:red'"></td>
-			</tr>
-			<tr>
-				<td>Genere:</td>
-				<td><input th:field=*{genere} type="text" required/></td>
-				<td th:if="${#fields.hasErrors('genere')}" th:errors="*{genere}" th:style="'color:red'"></td>
-			</tr>
-			<tr>
-				<td>Trama:</td>
-				<td><input th:field=*{trama} type="text"/></td>
-				<td th:if="${#fields.hasErrors('trama')}" th:errors="*{trama}" th:style="'color:red'"></td>
-			</tr>
-			<tr>
-				<td>Locandina: </td>
-				<td><input type="file" name="image" accept="image/png, image/jpeg" /></td>
-			</tr>
-		</table>
-		<div>
-				<span><button type="submit">Conferma</button></span>
-				<span><a th:href="@{/admin/film}"><button type="button">Annulla</button></a></span>
-		</div>
-	</form>
+	<section class="admin-form">
+		<form th:action="@{'/admin/edit/film/' + ${film.id}}" method="POST" th:object="${film}" enctype="multipart/form-data">
+			<div>Modifica film</div>
+			<label>
+				<div>
+					<span>Titolo:</span>
+					<input th:field="*{titolo}" type="text" required/>
+				</div>
+				<div th:if="${#fields.hasErrors('titolo')}" th:errors="*{titolo}"></div>
+			</label>
+			<label>
+				<div>
+					<span>Durata:</span>
+					<input th:field="*{durata}" type="text" required/>
+				</div>
+				<div th:if="${#fields.hasErrors('durata')}" th:errors="*{durata}"></div>
+			</label>
+			<label>
+				<div>
+					<span>Regista:</span>
+					<input th:field="*{regista}" type="text" required/>
+				</div>
+				<div th:if="${#fields.hasErrors('durata')}" th:errors="*{regista}"></div>
+			</label>
+			<label>
+				<div>
+					<span>Genere:</span>
+					<input th:field="*{genere}" type="text" required/>
+				</div>
+				<div th:if="${#fields.hasErrors('durata')}" th:errors="*{genere}"></div>
+			</label>
+			<label>
+				<div>
+					<span>Trama:</span>
+					<textarea th:field="*{trama}" type="text" placeholder="255 caratteri max"/>
+				</div>
+				<div th:if="${#fields.hasErrors('durata')}" th:errors="*{trama}"></div>
+			</label>
+			<label>
+				<div>
+					<span>Locandina:</span>
+					<input id="locandina" type="file" name="image" accept="image/png, image/jpeg"/>
+				</div>
+			</label>
+			<div>
+				<button class="button-edit" type="submit">Conferma</button>
+				<a th:href="@{/admin/film}"><button class="button-remove" type="button">Annulla</button></a>
+			</div>
+		</form>
+	</section>
+	<footer th:replace="fragments/base.html :: fondo"></footer>
 </body>
 </html>

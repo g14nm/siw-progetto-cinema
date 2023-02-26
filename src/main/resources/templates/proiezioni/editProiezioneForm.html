@@ -1,41 +1,42 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/base.html :: headerfiles(title='Edit proiezione')"> </head>
+<head th:replace="fragments/base.html :: headerfiles(title='Edit Proiezione')"> </head>
 <body>
 	<header th:replace="fragments/admin_base.html :: intestazione"></header>
-	<div>
-		<h4>Modifica proiezione</h4>
-	</div>
-	<form th:action="@{'/admin/edit/proiezione/' + ${proiezione.id}}" method="POST" th:object="${proiezione}">
-		<table>
-			<tr>
-				<td>Data: </td>
-				<td><input th:field="*{data}" type="datetime-local" required /></td>
-				<td th:if="${#fields.hasErrors('data')}" th:errors="*{data}" th:style="'color:red'"></td>
-			</tr>
-			<tr>
-				<td>Film: </td>
-				<td>
-					<label for="film-select"></label>
-						<select th:field="*{film}" id="film-select" required>
-						    <option th:each="film : ${films}" th:value="${film.id}" th:text="${film.titolo}">Titolo film</option>
-						</select>	
-				</td>
-			</tr>
-			<tr>
-				<td>Sala: </td>
-				<td>
-					<label for="sala-select"></label>
-						<select th:field="*{sala}" id="sala-select" required>
-						    <option th:each="sala : ${sale}" th:value="${sala.id}" th:text="${sala.nome}">Sala</option>
-						</select>	
-				</td>
-			</tr>
-		</table>
-		<div>
-				<span><button type="submit">Conferma</button></span>
-				<span><a th:href="@{/admin/proiezioni}"><button type="button">Annulla</button></a></span>
-		</div>
-	</form>
+	<section class="admin-form">
+		<form th:action="@{'/admin/edit/proiezione/' + ${proiezione.id}}" method="POST" th:object="${proiezione}">
+			<div>Modifica proiezione</div>
+			<label>
+				<div>
+					<span>Data:</span>
+					<input th:field="*{data}" type="datetime-local" min="" th:attr="min=${mindata}" required/>
+				</div>
+				<div th:if="${#fields.hasErrors('data')}" th:errors="*{data}"></div>
+			</label>
+			<label>
+				<div>
+					<span>Film:</span>
+					<select th:field="*{film}" required>
+						<option value="">- Seleziona un film -</option>
+						<option th:each="film : ${films}" th:value="${film.id}" th:text="${film.titolo}">Titolo proiezione</option>
+					</select>	
+				</div>
+			</label>
+			<label>
+				<div>
+					<span>Sala:</span>
+					<select th:field="*{sala}" required>
+				 		<option value="">- Seleziona una sala -</option>
+						<option th:each="sala : ${sale}" th:value="${sala.id}" th:text="${sala.nome}">Sala</option>
+					</select>	
+				</div>
+			</label>
+			<div>
+				<button class="button-edit" type="submit">Conferma</button>
+				<a th:href="@{/admin/proiezioni}"><button class="button-remove" type="button">Annulla</button></a>
+			</div>
+		</form>
+	</section>
+	<footer th:replace="fragments/base.html :: fondo"></footer>
 </body>
 </html>
