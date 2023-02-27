@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/base.html :: headerfiles(title='Confirm deletion of proiezione')"> </head>
+<head th:replace="fragments/base.html :: headerfiles(title='Delete Proiezione')"> </head>
 <body>
 	<header th:replace="fragments/admin_base.html :: intestazione"></header>
-	<div>
-		<h4 th:text="@{'Confermi rimozione di proiezione: ' + ${proiezione.id} + '?'}">Conferma rimozione di proiezione</h4>
-	</div>
-	<form th:action="@{'/admin/delete/proiezione/' + ${proiezione.id}}" method="POST">
-		<section>
-			<h5>Dati della proiezione: </h5>
-			<ul>
-				<li th:text="'Data: ' + ${#temporals.format(proiezione.data, 'dd-MM-yyyy HH:mm')}">Nome</li>
-				<li th:text="'Film: ' + ${proiezione.film.titolo}">Film</li>
-				<li th:text="'Sala: ' + ${proiezione.sala.nome}">Sala</li>
-			</ul>		
-		</section>
-		<div>
-				<span><button type="submit">Conferma</button></span>
-				<span><a th:href="@{/admin/proiezioni}"><button type="button">Annulla</button></a></span>
-		</div>
-	</form>
+	<section class="admin-delete-form">
+		<form th:action="@{'/admin/delete/proiezione/' + ${proiezione.id}}" method="POST" th:object="${proiezione}">
+			<div>Dettagli proiezione</div>
+			<div>
+				<span>Data:</span>
+				<span th:text="${#temporals.format(proiezione.data, 'dd-MM-yyyy HH:mm')}"></span>
+			</div>
+			<div>
+				<span>Film:</span>
+				<span th:text="*{film.titolo}"></span>
+			</div>
+			<div>
+				<span>Sala:</span>
+				<span th:text="*{sala.nome}"></span>
+			</div>
+			<div>
+				<button class="button-edit" type="submit">Rimuovi</button>
+				<a th:href="@{/admin/proiezioni}"><button class="button-remove" type="button">Annulla</button></a>
+			</div>
+		</form>
+	</section>
+	<footer th:replace="fragments/base.html :: fondo"></footer>
 </body>
 </html>

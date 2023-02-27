@@ -1,26 +1,34 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/base.html :: headerfiles(title='Confirm deletion of film')"> </head>
+<head th:replace="fragments/base.html :: headerfiles(title='Delete Film')"> </head>
 <body>
 	<header th:replace="fragments/admin_base.html :: intestazione"></header>
-	<div>
-		<h4 th:text="@{'Confermi rimozione di: ' + ${film.titolo} + '? Il film potrebbe avere proiezioni associate'}">Conferma rimozione di film</h4>
-	</div>
-	<form th:action="@{'/admin/delete/film/' + ${film.id}}" method="POST">
-		<section>
-			<h5>Dati del film: </h5>
-			<ul>
-				<li th:text="'Titolo: ' + ${film.titolo}">Titolo</li>
-				<li th:text="'Durata: ' + ${film.durata}">Durata</li>
-				<li th:text="'Regista: ' + ${film.regista}">Regista</li>
-				<li th:text="'Genere: ' + ${film.genere}">Genere</li>
-				<li th:text="'Trama: ' + ${film.trama}">Trama</li>
-			</ul>		
-		</section>
-		<div>
-				<span><button type="submit">Conferma</button></span>
-				<span><a th:href="@{/admin/film}"><button type="button">Annulla</button></a></span>
-		</div>
-	</form>
+	<section class="admin-delete-form">
+		<h1 th:if="${not #lists.isEmpty(film.proiezioni)}">Il film ha proiezioni associate!</h1>
+		<form th:action="@{'/admin/delete/film/' + ${film.id}}" method="POST" th:object="${film}">
+			<div>Dettagli film</div>
+			<div>
+				<span>Titolo:</span>
+				<span th:text="*{titolo}"></span>
+			</div>
+			<div>
+				<span>Durata:</span>
+				<span th:text="*{durata}"></span>
+			</div>
+			<div>
+				<span>Regista:</span>
+				<span th:text="*{regista}"></span>
+			</div>
+			<div>
+				<span>Genere:</span>
+				<span th:text="*{genere}"></span>
+			</div>
+			<div>
+				<button class="button-edit" type="submit">Rimuovi</button>
+				<a th:href="@{/admin/film}"><button class="button-remove" type="button">Annulla</button></a>
+			</div>
+		</form>
+	</section>
+	<footer th:replace="fragments/base.html :: fondo"></footer>
 </body>
 </html>
