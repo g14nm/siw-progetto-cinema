@@ -3,29 +3,26 @@
 <head th:replace="fragments/base.html :: headerfiles(title='Prenotazione')"> </head>
 <body>
 	<header th:replace="fragments/user_base.html :: intestazione"></header>
-	<section th:if="${proiezione.postiRimasti == 0}">
-		<h4>Spiacenti, nessun posto rimasto per questa proiezione</h4>
-	</section>
-	<section th:unless="${proiezione.postiRimasti == 0}">
-		<form th:action="@{'/user/prenotazione/' + ${proiezione.id}}" method="POST" th:object="${prenotazione}">
-			<table>
-				<tr>
-					<td>Seleziona numero di posti da prenotare: </td>
-					<td>
-						<label for="prenotazione-select"></label>
-							<select th:field="*{numeroPostiPrenotati}" id="prenotazione-select" required>
-							    <option value="">--Seleziona numero posti--</option>
-							    <option th:each="number : ${#numbers.sequence(1, proiezione.postiRimasti)}" th:value=${number} th:text=${number}>0</option>
-							</select>	
-					</td>
-					<td th:if="${#fields.hasErrors('numeroPostiPrenotati')}" th:errors="*{numeroPostiPrenotati}" th:style="'color:red'"></td>
-				</tr>
-			</table>
+	<section class="admin-form">
+		<h1 th:if="${proiezione.postiRimasti == 0}">Spiacenti, nessun posto rimasto per questa proiezione</h1>
+		<form th:unless="${proiezione.postiRimasti == 0}" th:action="@{'/user/prenotazione/' + ${proiezione.id}}" method="POST" th:object="${prenotazione}">
+			<div>Seleziona numero di posti da prenotare:</div>
+			<label>
+				<div>
+					<span>Numero posti:</span>
+					<select th:field="*{numeroPostiPrenotati}" required>
+						<option value="">- Seleziona numero -</option>
+						<option th:each="number : ${#numbers.sequence(1, proiezione.postiRimasti)}" th:value=${number} th:text=${number}>0</option>
+					</select>
+				</div>
+				<div th:if="${#fields.hasErrors('numeroPostiPrenotati')}" th:errors="*{numeroPostiPrenotati}"></div>
+			</label>
 			<div>
-					<span><button type="submit">Conferma</button></span>
-					<span><a th:href="@{/user/film}"><button type="button">Annulla</button></a></span>
+				<button class="button-edit" type="submit">Prenota</button>
+				<a th:href="@{/user/home}"><button class="button-remove" type="button">Annulla</button></a>
 			</div>
 		</form>
 	</section>
+	<footer th:replace="fragments/base.html :: fondo"></footer>
 </body>
 </html>
