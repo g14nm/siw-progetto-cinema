@@ -7,7 +7,10 @@
 	<section class="film-grid" >
 		<div>FILM IN SALA</div>
 		<article class="film-item" th:each="film : ${films}" th:if="${not #lists.isEmpty(film.proiezioni)}">
-			<a class="film-locandina" th:href="@{'/film/' + ${film.id}}">
+			<a sec:authorize="!isAuthenticated()" class="film-locandina" th:href="@{'/film/' + ${film.id}}">
+				<img th:src="@{'/locandine/' + ${film.id}}"/>
+			</a>
+			<a sec:authorize="hasAuthority('DEFAULT')" class="film-locandina" th:href="@{'/user/film/' + ${film.id}}">
 				<img th:src="@{'/locandine/' + ${film.id}}"/>
 			</a>
 			<div class="film-details">

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title='Film')"> </head>
+<body>
+	<header sec:authorize="hasAuthority('ADMIN')" th:replace="fragments/admin_base.html :: intestazione"></header>
+	<header sec:authorize="hasAuthority('DEFAULT')" th:replace="fragments/user_base.html :: intestazione"></header>
+	<header sec:authorize="!isAuthenticated()" th:replace="fragments/base.html :: intestazione"></header>
+	<section class="film" >
+		<div sec:authorize="hasAuthority('ADMIN')">
+			<a th:href="@{/admin/film}"><span class="material-icons">arrow_back</span></a>
+			<div>
+				<a th:href="@{'/admin/edit/film/' + ${film.id}}"><button class="button-edit" type="button">Modifica</button></a>
+				<a th:href="@{'/admin/delete/film/' + ${film.id}}"><button class="button-remove" type="button">Rimuovi</button></a>
+			</div>
+		</div>
+		<div>
+			<div>
+				<img th:src="@{'/locandine/' + ${film.id}}"/>
+			</div>
+			<div>
+				<div class="film-details-titolo" th:text="${film.titolo}">Titolo</div>
+				<div class="film-details-durata">
+					<span class="material-icons">schedule</span>
+					<span th:text="${film.durata}">0 min</span>
+				</div>
+				<div class="film-details-detail">
+					<span class="film-details-name">Regista: </span><span th:text="${film.regista}">Mario Rossi</span>
+				</div>
+				<div class="film-details-detail">
+					<span class="film-details-name">Genere: </span><span th:text="${film.genere}">Azione</span>
+				</div>
+				<div th:if="${not #strings.isEmpty(film.trama)}" class="film-details-detail">
+					<span class="film-details-name">Trama: </span><span th:text="${film.trama}">Trama</span>
+				</div>
+			</div>
+		</div>
+		<div>
+			<h2>Proiezioni:</h2>
+			<div th:each="proiezione: ${film.proiezioni}">
+				<div class="film-orario-day">
+					<span class="material-icons">calendar_month</span>
+					<span th:text="${#temporals.dayOfWeekNameShort(proiezione.data)} + ' ' + ${#temporals.format(proiezione.data, 'dd/MM/yyyy')}">Lun 01/01/2000</span>
+				</div>
+				<button sec:authorize="hasAuthority('ADMIN')" type="button">
+						<div th:text="'SALA ' + ${proiezione.sala.nome}">
+							Sala
+						</div>
+						<div th:text="${#temporals.format(proiezione.data, 'HH:mm')}">
+							00:00
+						</div>
+				</button>
+				<a sec:authorize="hasAuthority('DEFAULT')" th:href="@{'/user/prenotazione/' + ${proiezione.id}}">
+					<button type="button">
+						<div th:text="'SALA ' + ${proiezione.sala.nome}">
+							Sala
+						</div>
+						<div th:text="${#temporals.format(proiezione.data, 'HH:mm')}">
+							00:00
+						</div>
+					</button>
+				</a>
+				<a sec:authorize="!isAuthenticated()" th:href="@{'/user/prenotazione/' + ${proiezione.id}}">
+					<button type="button">
+						<div th:text="'SALA ' + ${proiezione.sala.nome}">
+							Sala
+						</div>
+						<div th:text="${#temporals.format(proiezione.data, 'HH:mm')}">
+							00:00
+						</div>
+					</button>
+				</a>
+			</div>
+		</div>
+	</section>
+	<footer th:replace="fragments/base.html :: fondo"></footer>
+</body>
+</html>

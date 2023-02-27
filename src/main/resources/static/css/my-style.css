@@ -264,6 +264,10 @@ button:hover {
 	margin-bottom: 15px;
 }
 
+.film-details-durata :nth-child(2) {
+	margin-left: 5px;
+}
+
 .film-details-detail {
 	margin-bottom: 10px;
 }
@@ -315,34 +319,36 @@ button:hover {
 }
 
 @media only screen and (max-width: 850px) {
-	.film-item {
+	.film-grid .film-item {
 		height: 100%;
 		width: 95%;
 		display: flex;
 		flex-direction: column;
 	}
 	
-	.film-locandina {
+	.film-grid .film-locandina {
 		height: 350px;
 		width: 90%;
 		align-items: center;
 	}
 	
-	.film-locandina img {
+	.film-grid .film-locandina img {
 		max-height: 95%;
 		max-width: 100%;
 	}
 	
-	.film-details {
+	.film-grid .film-details {
 		width: 90%;
 	}
 	
-	.film-details-titolo {
+	.film-grid .film-details-titolo {
+		font-size: 1.8rem;
+		word-break: break-word;
 		margin-top: 10px;
 		text-align: center;
 	}
 	
-	.film-orari {
+	.film-grid .film-orari {
 		max-height: 220px;
 		width: 90%;
 		margin-bottom: 25px;
@@ -351,7 +357,7 @@ button:hover {
 		justify-content: center;
 	}
 	
-	.film-orario {
+	.film-grid .film-orario {
 		height: 100px;
 		width: 160px;
 	}
@@ -793,4 +799,162 @@ button:hover {
 
 .button-remove {
 	background-color: maroon;
+}
+
+.film {
+	padding: 30px 20px 130px 20px;
+	display: flex;
+	flex-direction: column;
+}
+
+.film > :nth-last-child(3) {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.film > :nth-last-child(3) > a span {
+	font-size: 40px;
+	font-weight: bold;
+	color: #2B9CFF;
+}
+
+.film > :nth-last-child(3) button {
+	height: 35px;
+	width: 100px;
+	margin: 10px;
+	border: 0;
+	border-radius: 5px;
+	color: white;
+	font-size: 1rem;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.film > :nth-last-child(2) {
+	max-height: 600px;
+	width: 100%;
+	margin-top: 50px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.film > :nth-last-child(2) > :nth-child(1) {
+	max-height: 100%;
+	width: 48%;
+	display: flex;
+	justify-content: end;
+}
+
+.film > :nth-last-child(2) > :nth-child(1) img {
+	max-height: 100%;
+	max-width: 100%;
+	border: solid 1px;
+	border-radius: 5px;
+	border-color: lightgrey;
+	padding: 3%;
+}
+
+.film > :nth-last-child(2) > :nth-child(2) {
+	height: 100%;
+	width: 48%;
+	display: flex;
+	flex-direction: column;
+}
+
+.film .film-details-titolo {
+	font-size: 1.8rem; 
+}
+
+@media only screen and (max-width: 600px) {
+	.film {
+		padding: 30px 0 130px 0;
+		align-items: center;
+	}
+	
+	.film > :nth-last-child(3) {
+		width: 95%;
+	}
+	
+	.film > :nth-last-child(2) {
+		max-height: 100%;
+		flex-direction: column;
+		align-items: center;
+	}
+	
+	.film > :nth-last-child(2) > :nth-child(1) {
+		width: 95%;
+		justify-content: center;
+	}
+	
+	.film > :nth-last-child(2) > :nth-child(2) {
+		width: 95%;
+	}
+	
+	.film .film-details-titolo {
+		margin-top: 25px;
+		word-break: break-word;
+		text-align: center;
+	}
+}
+
+@media only screen and (max-width: 350px) {
+	.film > :nth-last-child(3) {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	
+	.film > :nth-last-child(3) a {
+		text-decoration: none;
+		display: flex;
+		justify-content: center;
+	}
+}
+
+.film > :nth-last-child(1) {
+	margin-top: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.film > :nth-last-child(1) > div {
+	height: 100px;
+	width: 160px;
+	display: flex;
+	flex-direction: column;
+	flex-shrink: 0;
+	margin-bottom: 10px;
+}
+
+.film > :nth-last-child(1) > div a {
+	height: 50%;
+	width: 90%;
+}
+
+.film > :nth-last-child(1) > div > button {
+	height: 50%;
+	width: 90%;
+ 	background-color: #2B9CFF;
+ 	border: 0;
+  	font-weight: bold;
+  	color: white;
+}
+
+.film > :nth-last-child(1) > div > button:hover {
+	opacity: 1;
+}
+
+.film > :nth-last-child(1) > div a button {
+	height: 100%;
+	width: 100%;
+ 	background-color: #2B9CFF;
+ 	box-shadow:0 0 15px 0 rgba(0,0,0,0.2);
+ 	border: 0;
+  	border-radius: 5px;
+  	cursor: pointer;
+  	font-weight: bold;
+  	color: white;
 }
