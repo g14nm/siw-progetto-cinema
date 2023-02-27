@@ -20,15 +20,19 @@ public class Film {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@Column(nullable = false)
 	@NotBlank
 	private String titolo;
 	
+	@Column(nullable = false)
 	@NotBlank
 	private String durata;
 	
+	@Column(nullable = false)
 	@NotBlank
 	private String regista;
 	
+	@Column(nullable = false)
 	@NotBlank
 	private String genere;
 	

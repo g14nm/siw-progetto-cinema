@@ -19,7 +19,7 @@ public class Prenotazione {
 	private Long id;
 	
 	@NotNull
-	@Min(0)
+	@Min(1)
 	private Integer numeroPostiPrenotati;
 	
 	@ManyToOne
