@@ -5,7 +5,7 @@
 	<header sec:authorize="hasAuthority('DEFAULT')" th:replace="fragments/user_base.html :: intestazione"></header>
 	<header sec:authorize="!isAuthenticated()" th:replace="fragments/base.html :: intestazione"></header>
 	<section class="film-grid" >
-		<div>FILM IN SALA</div>
+		<h1>FILM IN SALA</h1>
 		<article class="film-item" th:each="film : ${films}" th:if="${not #lists.isEmpty(film.proiezioni)}">
 			<a sec:authorize="!isAuthenticated()" class="film-locandina" th:href="@{'/film/' + ${film.id}}">
 				<img th:src="@{'/locandine/' + ${film.id}}"/>

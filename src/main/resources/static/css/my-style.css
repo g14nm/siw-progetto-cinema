@@ -210,9 +210,8 @@ button:hover {
 	align-items: center;
 }
 
-.film-grid > div {
-	font-size: 1.5rem;
-	font-weight: bold;
+.film-grid > h1 {
+	text-align: center;
 }
 
 .film-item {
@@ -534,6 +533,7 @@ button:hover {
 
 .table-section > h1 {
 	margin-top: 50px;
+	text-align: center;
 }
 
 .table-section table {
@@ -628,6 +628,7 @@ button:hover {
 
 .admin-form form > :nth-child(2) {
 	font-size: 2rem;
+	text-align: center;
 	margin-bottom: 50px;
 }
 
@@ -974,6 +975,10 @@ button:hover {
 	align-items: center;
 }
 
+.prenotazioni > h1 {
+	text-align: center;
+}
+
 .prenotazioni > div {
 	display: flex;
 	justify-content: center;
@@ -981,7 +986,7 @@ button:hover {
 }
 
 .prenotazioni > div > article {
-	height: 350px;
+	height: 300px;
 	width: 250px;
 	border-radius: 5px;
 	padding: 40px 10px;
@@ -1000,7 +1005,7 @@ button:hover {
 }
 
 .prenotazioni > div > article > :nth-child(1) {
-	font-size: 2.5rem;
+	font-size: 2rem;
 	font-weight: bold;
 	color: #2B9CFF;
 }
@@ -1008,7 +1013,6 @@ button:hover {
 .prenotazioni > div > article > :nth-child(2) {
 	max-width: 100%;
 	margin-top: 5px;
-	font-size: 1.8rem;
 	font-weight: bold;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -1066,4 +1070,10 @@ button:hover {
 	.prenotazioni > div > article > :nth-child(3) {
 		text-align: center;
 	}
+}
+
+.admin-form form > :nth-child(2) > :nth-child(2) {
+	color:red;
+	font-size: 1.5rem;
+	margin-top: 10px;
 }

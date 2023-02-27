@@ -6,7 +6,10 @@
 	<section class="admin-form">
 		<h1 th:if="${proiezione.postiRimasti == 0}">Spiacenti, nessun posto rimasto per questa proiezione</h1>
 		<form th:unless="${proiezione.postiRimasti == 0}" th:action="@{'/user/prenotazione/' + ${proiezione.id}}" method="POST" th:object="${prenotazione}">
-			<div>Seleziona numero di posti da prenotare:</div>
+			<div>
+				<div th:text="${proiezione.film.titolo}">Film</div>
+				<div th:text="${#temporals.format(proiezione.data, 'dd-MM-yyyy HH:mm')}">01-01-2000 00:00</div>
+			</div>
 			<label>
 				<div>
 					<span>Numero posti:</span>
