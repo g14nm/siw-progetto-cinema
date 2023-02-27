@@ -835,7 +835,6 @@ button:hover {
 }
 
 .film > :nth-last-child(2) {
-	max-height: 600px;
 	width: 100%;
 	margin-top: 50px;
 	display: flex;
@@ -843,14 +842,13 @@ button:hover {
 }
 
 .film > :nth-last-child(2) > :nth-child(1) {
-	max-height: 100%;
 	width: 48%;
 	display: flex;
 	justify-content: end;
+	align-items: center;
 }
 
 .film > :nth-last-child(2) > :nth-child(1) img {
-	max-height: 100%;
 	max-width: 100%;
 	border: solid 1px;
 	border-radius: 5px;
@@ -859,10 +857,14 @@ button:hover {
 }
 
 .film > :nth-last-child(2) > :nth-child(2) {
-	height: 100%;
 	width: 48%;
+	border: solid 1px;
+	border-radius: 5px;
+	border-color: lightgrey;
+	padding: 3%;
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 }
 
 .film .film-details-titolo {
@@ -880,7 +882,6 @@ button:hover {
 	}
 	
 	.film > :nth-last-child(2) {
-		max-height: 100%;
 		flex-direction: column;
 		align-items: center;
 	}
@@ -892,10 +893,10 @@ button:hover {
 	
 	.film > :nth-last-child(2) > :nth-child(2) {
 		width: 95%;
+		margin-top: 25px;
 	}
 	
 	.film .film-details-titolo {
-		margin-top: 25px;
 		word-break: break-word;
 		text-align: center;
 	}
