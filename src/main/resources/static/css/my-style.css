@@ -711,6 +711,7 @@ button:hover {
 
 .admin-form select {
   	height: 35px;
+  	max-width: calc(100% - 130px);
 	margin-left: 20px;
 	border: solid 2px;
 	border-color: darkgrey;
@@ -766,6 +767,7 @@ button:hover {
 	
 	.admin-form form label > :nth-child(1) select {
 		width: 100%;
+		max-width: 100%;
 		margin-left: 0px;
 	}
 	
@@ -957,4 +959,106 @@ button:hover {
   	cursor: pointer;
   	font-weight: bold;
   	color: white;
+}
+
+.prenotazioni {
+	margin-top: 50px;
+	padding-bottom: 130px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.prenotazioni > div {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.prenotazioni > div > article {
+	height: 350px;
+	width: 250px;
+	border-radius: 5px;
+	padding: 40px 10px;
+	margin: 40px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	box-shadow:0 0 15px 0 rgba(0,0,0,0.2);
+	background-color: #F5F5F5;
+}
+
+.prenotazioni > div > article > div {
+	font-size: 1.1rem;
+	margin-bottom: 5px;
+}
+
+.prenotazioni > div > article > :nth-child(1) {
+	font-size: 2.5rem;
+	font-weight: bold;
+	color: #2B9CFF;
+}
+
+.prenotazioni > div > article > :nth-child(2) {
+	max-width: 100%;
+	margin-top: 5px;
+	font-size: 1.8rem;
+	font-weight: bold;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.prenotazioni > div > article > :nth-child(3) {
+	color: red;
+}
+
+.prenotazioni > div > article button {
+	height: 35px;
+	width: 100px;
+	margin: 10px;
+	border: 0;
+	border-radius: 5px;
+	color: white;
+	font-size: 1rem;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+@media only screen and (max-width: 350px) {
+	.prenotazioni > div > article {
+		margin: 40px 0;
+	}
+	
+	.prenotazioni > div > article {
+		height: 100%;
+	}
+	
+	.prenotazioni > div > article > div {
+		margin-bottom: 15px;
+	}
+	
+	.prenotazioni > div > article > :nth-child(2) {
+		text-align: center;
+		white-space: normal;
+	}
+}
+
+@media only screen and (max-width: 270px) {
+	.prenotazioni > div {
+		width: 95%;
+	}
+	
+	.prenotazioni > div > article {
+		width: 100%;
+	}
+	
+	.prenotazioni > div > article > :nth-child(1) {
+		text-align: center;
+	}
+	
+	.prenotazioni > div > article > :nth-child(3) {
+		text-align: center;
+	}
 }

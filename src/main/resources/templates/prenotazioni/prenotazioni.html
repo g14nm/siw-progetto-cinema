@@ -3,28 +3,22 @@
 <head th:replace="fragments/base.html :: headerfiles(title='Prenotazioni')"> </head>
 <body>
 	<header th:replace="fragments/user_base.html :: intestazione"></header>
-	<section th:if="${#lists.isEmpty(prenotazioni)}">
-		<h4>Nessuna prenotazione effettuata</h4>
+	<section th:if="${#lists.isEmpty(prenotazioni)}" class="prenotazioni">
+		<h1>Nessuna prenotazione effettuata</h1>
 	</section>
-	<section th:unless="${#lists.isEmpty(prenotazioni)}">
-		<h4>Prenotazioni effettuate</h4>
-		<table>
-			<tr>
-			<tr>
-				<th>ID</th>
-				<th>Film</th>
-				<th>Sala</th>
-				<th>Data</th>
-				<th>Posti prenotati</th>
-			<tr th:each="prenotazione : ${prenotazioni}">
-				<td th:text="${prenotazione.id}">Id</td>
-				<td th:text="${prenotazione.proiezione.film.titolo}">Film</td>
-				<td th:text="${prenotazione.proiezione.sala.nome}">Sala</td>
-				<td th:text="${#temporals.format(prenotazione.proiezione.data, 'dd/MM/yyyy HH:mm')}">01/01/00 00:00</td>
-				<td th:text="${prenotazione.numeroPostiPrenotati}">0</td>
-				<td><a th:href="@{'/user/prenotazione/delete/' + ${prenotazione.id}}"><button type="button">Rimuovi</button></a></td>
-			</tr>
-		</table>
+	<section th:unless="${#lists.isEmpty(prenotazioni)}" class="prenotazioni">
+		<h1>Prenotazioni effettuate</h1>
+		<div>
+			<article th:each="prenotazione : ${prenotazioni}">
+				<div th:text="${'ID ' + prenotazione.id}">Id</div>
+				<div th:text="${prenotazione.proiezione.film.titolo}">Film</div>
+				<div th:text="${#temporals.format(prenotazione.proiezione.data, 'dd/MM/yyyy HH:mm')}">01/01/00 00:00</div>
+				<div th:text="'Sala ' + ${prenotazione.proiezione.sala.nome}">Sala 1</div>
+				<div th:text="${'Posti: ' + prenotazione.numeroPostiPrenotati}">1</div>
+				<a th:href="@{'/user/prenotazione/delete/' + ${prenotazione.id}}"><button class="button-remove" type="button">Rimuovi</button></a>
+			</article>
+		</div>
 	</section>
+	<footer th:replace="fragments/base.html :: fondo"></footer>
 </body>
 </html>
