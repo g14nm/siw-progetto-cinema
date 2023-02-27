@@ -25,21 +25,21 @@
 					<span>Regista:</span>
 					<input th:field="*{regista}" type="text" required/>
 				</div>
-				<div th:if="${#fields.hasErrors('durata')}" th:errors="*{regista}"></div>
+				<div th:if="${#fields.hasErrors('regista')}" th:errors="*{regista}"></div>
 			</label>
 			<label>
 				<div>
 					<span>Genere:</span>
 					<input th:field="*{genere}" type="text" required/>
 				</div>
-				<div th:if="${#fields.hasErrors('durata')}" th:errors="*{genere}"></div>
+				<div th:if="${#fields.hasErrors('genere')}" th:errors="*{genere}"></div>
 			</label>
 			<label>
 				<div>
 					<span>Trama:</span>
-					<textarea th:field="*{trama}" type="text" placeholder="255 caratteri max"/>
+					<textarea th:field="*{trama}" type="text"/>
 				</div>
-				<div th:if="${#fields.hasErrors('durata')}" th:errors="*{trama}"></div>
+				<div th:if="${#fields.hasErrors('trama')}" th:errors="*{trama}"></div>
 			</label>
 			<label>
 				<div>
